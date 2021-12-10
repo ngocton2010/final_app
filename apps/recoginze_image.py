@@ -11,7 +11,7 @@ import cv2
 import tensorflow as tf
 import numpy as np
 
-from index import app
+from app import dash_app
 
 model = tf.keras.models.load_model('model/mdfinal.h5')
 
@@ -104,7 +104,7 @@ def save_file(name, content):
     mang1 = np.array(img)
     cv2.imwrite(r'static\\'+name,mang1)    
 
-@app.callback(
+@dash_app.callback(
     Output('output-image-upload','src'),
     [Input("upload-image", "filename"),
      Input("upload-image", "contents")],
@@ -114,7 +114,7 @@ def upload(filename,contents):
         return contents
     else:
         raise dash.exceptions.PreventUpdate()
-@app.callback(
+@dash_app.callback(
     [Output('output-process-image-upload','src'),
      Output('pred','children')],
     [Input("upload-image", "filename"),
