@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import img_to_array
 import tensorflow as tf
 
-from index import server
+from app import app
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -57,7 +57,7 @@ def gen(camera):
 
 
 
-@server.route('/video_feed')
+@app.route('/video_feed')
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
