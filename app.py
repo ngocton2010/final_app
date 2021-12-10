@@ -8,14 +8,14 @@ import dash
 import dash_bootstrap_components as dbc
 
 FA = "https://use.fontawesome.com/releases/v5.15.2/css/all.css"
-app = dash.Dash(__name__,suppress_callback_exceptions=True,external_stylesheets=[dbc.themes.BOOTSTRAP,FA])
-server = app.server
+dash_app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,FA])
+app=dash_app.server
 # from app import server
 
 # Connect to your app pages
 from apps import camera, recoginze_image
 # server = app.server
-app.layout = html.Div([
+dash_app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div([
         html.Div(
